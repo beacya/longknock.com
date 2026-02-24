@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* ── Brand tokens ─────────────────────────────────────────────────────────── */
+:root {
+  --void-black: #0a0a0a;
+  --time-gold: #c9a84c;
+  --time-gold-dim: rgba(201, 168, 76, 0.4);
+}
+
+/* ── Tailwind custom utilities via @theme ─────────────────────────────────── */
+@theme {
+  --color-void-black: #0a0a0a;
+  --color-time-gold: #c9a84c;
+}
+
+/* ── Base resets ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--void-black);
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Timeline range slider ────────────────────────────────────────────────── */
+.timeline-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--time-gold) 0%,
+    var(--time-gold) var(--fill, 0%),
+    #2d2d2d var(--fill, 0%),
+    #2d2d2d 100%
+  );
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--time-gold);
+  border: 2px solid var(--void-black);
+  box-shadow: 0 0 8px var(--time-gold-dim);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.timeline-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px var(--time-gold);
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--time-gold);
+  border: 2px solid var(--void-black);
+  cursor: pointer;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out forwards;
+}
+
+/* ── Mapbox overrides ─────────────────────────────────────────────────────── */
+.mapboxgl-ctrl-logo {
+  opacity: 0.4 !important;
+}
+
+.mapboxgl-ctrl-attrib {
+  opacity: 0.4 !important;
+  font-size: 10px !important;
+}
+
+.mapboxgl-ctrl-bottom-right {
+  bottom: 130px !important;
+}
