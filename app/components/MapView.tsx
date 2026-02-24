@@ -227,6 +227,8 @@ export default function MapView({
       map.remove();
       mapRef.current = null;
     };
+    // This effect intentionally runs once on mount to initialize the Mapbox map instance.
+    // buildPathGeoJSON and buildPointsGeoJSON are updated via separate effects below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
